@@ -1,0 +1,30 @@
+name: model-wine-quality
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run action
+      env:
+        REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN  }}
+      run: |
+        # ml workflow
+        pip install -r requirements.txt
+        python train.py
+
+        # Define model report
+        echo "# Model Metrics Report" > report.md
+        
+        echo "## Model Metrics" > report.md
+        cat metrics.txt >> report.md
+
+        echo "## Data Visualization" > report.md
+        cml-publish feature_importance.png --title feature-importance --md >> report.md
+
+        cml-publish residuals.png --title residuals-plot --md >> report.md
+
+        cml-send-comment report.md
+        
+
