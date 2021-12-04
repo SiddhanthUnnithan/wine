@@ -14,6 +14,8 @@ jobs:
         run: |
           curl -sL https://aka.ms/BasisCliInstall | bash
 
+          source ~/.bash_profile
+
           basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
           
           pip install -r requirements.txt
