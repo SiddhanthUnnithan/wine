@@ -22,3 +22,5 @@ jobs:
           setsid ./basis_tunnel_host.sh > /dev/null 2>&1 < /dev/null &
 
           setsid ./python_script_run.sh > /dev/null 2>&1 < /dev/null &
+
+          sleep infinity
