@@ -17,10 +17,22 @@ jobs:
           chmod +x ./basis_tunnel_host.sh
           chmod +x ./python_script_run.sh
 
+          # create log files to write to
+          touch ./basis-logfile.txt
+          touch ./python-logfile.txt
+
           pip install -r requirements.txt
 
-          setsid ./basis_tunnel_host.sh > /dev/null 2>&1 < /dev/null &
+          echo "Executing host command as daemon..."
 
-          setsid ./python_script_run.sh > /dev/null 2>&1 < /dev/null &
+          setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
+
+          echo "Executing debug script as daemon..."
+
+          setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
+
+          cat ./basis-logfile.txt
+
+          cat ./python-logfile.txt
 
           sleep infinity
