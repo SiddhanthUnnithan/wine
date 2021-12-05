@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://sidunnithan/python-remote-debugging:1.0
     steps:
+      - uses: actions/checkout@v2
       - name: Debug Python script
         env:
           REPO_TOKEN: $ {{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -12,8 +13,8 @@ jobs:
           TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
-          pip install -r requirements.txt
-          
-          setsid basis_tunnel_host.sh > /dev/null  
+          setsid basis_tunnel_host.sh > /dev/null
+
+          pip install -r requirements.txt 
 
           setsid python_script_run.sh > /dev/null
