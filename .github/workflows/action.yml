@@ -12,8 +12,8 @@ jobs:
           TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
-          setsid basis_tunnel_host.sh > /dev/null  
-
           pip install -r requirements.txt
+          
+          setsid basis_tunnel_host.sh > /dev/null  
 
           setsid python_script_run.sh > /dev/null
