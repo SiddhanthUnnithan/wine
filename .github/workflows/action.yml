@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://sidunnithan/python-remote-debugging:1.0
     steps:
-      - name: 
       - name: Debug Python script
         env:
           REPO_TOKEN: $ {{ secrets.PERSONAL_ACCESS_TOKEN }}
