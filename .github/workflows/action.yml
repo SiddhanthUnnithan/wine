@@ -25,12 +25,12 @@ jobs:
 
           pip install -r requirements.txt
 
-          # basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
+          basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
 
           # python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py
 
-          setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
+          # setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
 
-          setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
+          # setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
 
           sleep infinity
