@@ -21,9 +21,13 @@ jobs:
           touch ./basis-logfile.txt
           touch ./python-logfile.txt
 
+          echo $TUNNEL_ID
+
           pip install -r requirements.txt
 
-          basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
+          # basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
+
+          python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py
 
           # setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
 
