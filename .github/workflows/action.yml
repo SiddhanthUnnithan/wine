@@ -17,8 +17,8 @@ jobs:
           chmod +x ./basis_tunnel_host.sh
           chmod +x ./python_script_run.sh
 
-          setsid ./basis_tunnel_host.sh > /dev/null
-
           pip install -r requirements.txt
 
-          setsid ./python_script_run.sh > /dev/null
+          setsid ./basis_tunnel_host.sh > /dev/null 2>&1 < /dev/null &
+
+          setsid ./python_script_run.sh > /dev/null 2>&1 < /dev/null &
