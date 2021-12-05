@@ -13,6 +13,10 @@ jobs:
           TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
+          # access to shell script executables
+          chmod +x ./basis_tunnel_host.sh
+          chmod +x ./python_script_run.sh
+
           setsid ./basis_tunnel_host.sh > /dev/null
 
           pip install -r requirements.txt
