@@ -23,12 +23,10 @@ jobs:
 
           pip install -r requirements.txt
 
-          setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
+          basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
 
-          setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
+          # setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
 
-          cat ./basis-logfile.txt
-
-          cat ./python-logfile.txt
+          # setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
 
           sleep infinity
