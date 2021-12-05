@@ -23,11 +23,7 @@ jobs:
 
           pip install -r requirements.txt
 
-          echo "Executing host command as daemon..."
-
           setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
-
-          echo "Executing debug script as daemon..."
 
           setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
 
