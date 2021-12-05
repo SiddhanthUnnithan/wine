@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://sidunnithan/python-remote-debugging:1.0
     steps:
+      - name: 
       - name: Debug Python script
         env:
           REPO_TOKEN: $ {{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -12,8 +13,8 @@ jobs:
           TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
-          basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
-          
+          setsid basis_tunnel_host.sh > /dev/null  
+
           pip install -r requirements.txt
 
-          python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py
+          setsid python_script_run.sh > /dev/null
