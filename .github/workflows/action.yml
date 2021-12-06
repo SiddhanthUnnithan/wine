@@ -10,7 +10,7 @@ jobs:
         env:
           REPO_TOKEN: $ {{ secrets.PERSONAL_ACCESS_TOKEN }}
           HOST_ACCESS_TOKEN: ${{ secrets.PYRD_HOST_ACCESS_TOKEN }}
-      TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
+          TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
           pip install -r requirements.txt
