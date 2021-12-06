@@ -21,6 +21,8 @@ jobs:
 
           apt install libicu-dev -y
 
+          apt install systemd -y
+
           curl -sL https://aka.ms/BasisCliInstall | bash
         
           # access to shell script executables
