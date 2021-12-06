@@ -26,8 +26,8 @@ jobs:
           curl -sL https://aka.ms/BasisCliInstall | bash
         
           # access to shell script executables
-          chmod +x ./basis_tunnel_host.sh
-          chmod +x ./python_script_run.sh
+          chmod +x $WORKSPACE/basis_tunnel_host.sh
+          chmod +x $WORKSPACE/python_script_run.sh
           chmod +x ./basis-tunnel-host.service
           chmod +x ./python-script.service
 
@@ -42,9 +42,7 @@ jobs:
 
           ls $WORKSPACE
 
-          nohup $WORKSPACE/basis_tunnel_host.sh &
-
-          cat nohup.out
+          $WORKSPACE/basis_tunnel_host.sh &
 
           : '
           systemctl daemon-reload
