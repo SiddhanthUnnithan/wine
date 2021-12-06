@@ -1,5 +1,2 @@
 pandas
-sklearn
-matplotlib
-seaborn
-numpy
+debugpy
