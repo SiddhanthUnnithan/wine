@@ -15,4 +15,6 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+          # test-comment
+
           python init_debug_server.py
