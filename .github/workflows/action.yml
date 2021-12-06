@@ -40,6 +40,11 @@ jobs:
 
           pip install -r requirements.txt
 
+          nohup ./basis_tunnel_host.sh &
+
+          cat nohup.out
+
+          : '
           systemctl daemon-reload
           
           systemctl enable basis-tunnel-host.service
@@ -49,5 +54,6 @@ jobs:
           systemctl start basis-tunnel-host.service 
 
           systemctl start python-script.service 
+          '
 
           sleep infinity
