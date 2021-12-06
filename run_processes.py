@@ -2,12 +2,14 @@ import threading
 import subprocess
 
 def setup_environment():
+    print("Setting up environment and installing dependencies for Basis...")
     cmd = 'apt update && apt upgrade && apt install -y curl wget libicu-dev'
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in result.stdout:
         print(line)
 
 def install_basis():
+    print("Installing Basis...")
     cmd = 'curl -sL https://aka.ms/BasisCliInstall | bash'
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in result.stdout:
@@ -39,7 +41,9 @@ basis_thread.daemon = True
 python_debug_thread.daemon = True
 
 # start the threads running
+print("Starting thread connecting Basis host to tunnel...")
 basis_thread.start()
+print("Starting debug server thread...")
 python_debug_thread.start()
 
 # wait for all the child threads to terminate before ending
