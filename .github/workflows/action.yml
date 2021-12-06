@@ -35,9 +35,9 @@ jobs:
           touch ./basis-logfile.txt
           touch ./python-logfile.txt
 
-          # pip install -r requirements.txt
+          pip install -r requirements.txt
 
-          # ~/bin/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
+          $HOME/bin/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
 
           # python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py
 
