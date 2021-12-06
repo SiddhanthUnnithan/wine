@@ -2,7 +2,7 @@ import threading
 import subprocess
 
 def connect_basis_host():
-    cmd = 'basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN'
+    cmd = '$WORKSPACE/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN'
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in result.stdout:
         print(line)
