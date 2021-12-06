@@ -21,11 +21,21 @@ jobs:
           touch ./basis-logfile.txt
           touch ./python-logfile.txt
 
+          echo "root"
+
+          ls /
+          
+          echo "home"
+
           ls ~
+
+          echo "home"
 
           ls $HOME
 
-          ls GITHUB_WORKSPACE
+          echo "workspace"
+
+          ls $GITHUB_WORKSPACE
 
           echo $TUNNEL_ID
 
