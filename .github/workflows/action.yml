@@ -21,6 +21,8 @@ jobs:
           touch ./basis-logfile.txt
           touch ./python-logfile.txt
 
+          source ~/.bashrc
+
           echo $TUNNEL_ID
 
           pip install -r requirements.txt
