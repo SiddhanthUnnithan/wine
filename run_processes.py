@@ -8,7 +8,7 @@ def connect_basis_host():
         print(line)
 
 def run_python_debug_server():
-    cmd = 'python -m debugpy --listen 127.0.0.1:5678 --wait-for-client $WORKSPACE/train.py'
+    cmd = 'python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py'
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in result.stdout:
         print(line)

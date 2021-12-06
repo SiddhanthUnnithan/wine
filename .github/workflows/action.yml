@@ -27,6 +27,6 @@ jobs:
 
           ls $WORKSPACE
 
-          python $WORKSPACE/train.py
+          python ./train.py
 
-          python run_processes.py
+          python ./run_processes.py
