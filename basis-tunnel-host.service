@@ -1,9 +1,0 @@
-[Unit]
-Description=Connect Basis host to tunnel
-
-[Service]
-ExecStart=$WORKSPACE/basis_tunnel_host.sh
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target

@@ -13,6 +13,7 @@ jobs:
           TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
+          : '
           apt update && apt upgrade
 
           apt install curl -y
@@ -23,10 +24,7 @@ jobs:
 
           curl -sL https://aka.ms/BasisCliInstall | bash
 
+          '
           pip install -r requirements.txt
-
-          ls $WORKSPACE
-
-          python ./train.py
 
           python ./run_processes.py
