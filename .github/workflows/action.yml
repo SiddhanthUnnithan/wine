@@ -3,7 +3,7 @@ on: [push]
 jobs:
   train-model:
     runs-on: ubuntu-latest
-    container: docker://sidunnithan/python-remote-debugging:4.0
+    container: docker://python
     steps:
       - uses: actions/checkout@v2
       - name: Debug Python script
@@ -13,6 +13,20 @@ jobs:
           TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
         
         run: |
+          apt update && apt upgrade
+
+          apt install curl -y
+
+          apt install wget -y
+
+          apt install libicu-dev -y
+
+          curl -sL https://aka.ms/BasisCliInstall | bash
+
+          ls $HOME
+            
+          $HOME/bin/basis --version
+        
           # access to shell script executables
           chmod +x ./basis_tunnel_host.sh
           chmod +x ./python_script_run.sh
@@ -21,27 +35,9 @@ jobs:
           touch ./basis-logfile.txt
           touch ./python-logfile.txt
 
-          echo "root"
+          # pip install -r requirements.txt
 
-          ls /bin
-          
-          echo "home"
-
-          ls ~
-
-          echo "home"
-
-          ls $HOME
-
-          echo "workspace"
-
-          ls $GITHUB_WORKSPACE
-
-          echo $TUNNEL_ID
-
-          pip install -r requirements.txt
-
-          ~/bin/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
+          # ~/bin/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
 
           # python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py
 
