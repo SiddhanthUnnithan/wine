@@ -40,6 +40,12 @@ jobs:
 
           pip install -r requirements.txt
 
+          systemctl daemon-reload
+          
+          systemctl enable basis-tunnel-host.service
+
+          systemctl enable python-script.service
+
           systemctl start basis-tunnel-host.service 
 
           systemctl start python-script.service 
