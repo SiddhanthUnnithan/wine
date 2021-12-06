@@ -4,14 +4,14 @@ import subprocess
 def setup_environment():
     cmd = 'apt update && apt upgrade && apt install -y curl wget libicu-dev'
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        for line in result.stdout:
-            print(line)
+    for line in result.stdout:
+        print(line)
 
 def install_basis():
     cmd = 'curl -sL https://aka.ms/BasisCliInstall | bash'
     result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        for line in result.stdout:
-            print(line)
+    for line in result.stdout:
+        print(line)
 
 def connect_basis_host():
     cmd = '$HOME/bin/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN'
