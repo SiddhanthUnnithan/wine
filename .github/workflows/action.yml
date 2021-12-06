@@ -21,39 +21,10 @@ jobs:
 
           apt install libicu-dev -y
 
-          apt install systemd -y
-
           curl -sL https://aka.ms/BasisCliInstall | bash
-        
-          # access to shell script executables
-          chmod +x $WORKSPACE/basis_tunnel_host.sh
-          chmod +x $WORKSPACE/python_script_run.sh
-          chmod +x ./basis-tunnel-host.service
-          chmod +x ./python-script.service
-
-          # move service files to use with systemctl
-          mv ./basis-tunnel-host.service /etc/systemd/system/basis-tunnel-host.service
-          chmod +x /etc/systemd/system/basis-tunnel-host.service
-
-          mv ./python-script.service /etc/systemd/system/python-script.service
-          chmod +x /etc/systemd/system/python-script.service
 
           pip install -r requirements.txt
 
-          ls $WORKSPACE
-
-          $WORKSPACE/basis_tunnel_host.sh &
-
-          : '
-          systemctl daemon-reload
-          
-          systemctl enable basis-tunnel-host.service
-
-          systemctl enable python-script.service
-
-          systemctl start basis-tunnel-host.service 
-
-          systemctl start python-script.service 
-          '
+          python run_processes.py
 
           sleep infinity
