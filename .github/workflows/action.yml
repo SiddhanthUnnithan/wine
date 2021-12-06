@@ -21,7 +21,11 @@ jobs:
           touch ./basis-logfile.txt
           touch ./python-logfile.txt
 
-          source ~/.bashrc
+          ls ~
+
+          ls $HOME
+
+          ls GITHUB_WORKSPACE
 
           echo $TUNNEL_ID
 
