@@ -23,7 +23,7 @@ jobs:
 
           echo "root"
 
-          ls /
+          ls /bin
           
           echo "home"
 
