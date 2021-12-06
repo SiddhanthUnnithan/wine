@@ -40,6 +40,8 @@ jobs:
 
           pip install -r requirements.txt
 
+          ls $WORKSPACE
+
           nohup $WORKSPACE/basis_tunnel_host.sh &
 
           cat nohup.out
