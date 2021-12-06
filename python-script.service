@@ -1,0 +1,9 @@
+[Unit]
+Description=Run debug server
+
+[Service]
+ExecStart=$WORKSPACE/python_script_run.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

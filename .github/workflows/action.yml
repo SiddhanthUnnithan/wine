@@ -26,19 +26,20 @@ jobs:
           # access to shell script executables
           chmod +x ./basis_tunnel_host.sh
           chmod +x ./python_script_run.sh
+          chmod +x ./basis-tunnel-host.service
+          chmod +x ./python-script.service
 
-          # create log files to write to
-          touch ./basis-logfile.txt
-          touch ./python-logfile.txt
+          # move service files to use with systemctl
+          mv ./basis-tunnel-host.service /etc/systemd/system/basis-tunnel-host.service
+          chmod +x /etc/systemd/system/basis-tunnel-host.service
+
+          mv ./python-script.service /etc/systemd/system/python-script.service
+          chmod +x /etc/systemd/system/python-script.service
 
           pip install -r requirements.txt
 
-          # $HOME/bin/basis host $TUNNEL_ID --access-token $HOST_ACCESS_TOKEN
+          systemctl start basis-tunnel-host.service 
 
-          # python -m debugpy --listen 127.0.0.1:5678 --wait-for-client ./train.py
-
-          setsid ./basis_tunnel_host.sh > ./basis-logfile.txt 2>&1 < /dev/null &
-
-          setsid ./python_script_run.sh > ./python-logfile.txt 2>&1 < /dev/null &
+          systemctl start python-script.service 
 
           sleep infinity
