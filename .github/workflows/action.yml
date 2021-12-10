@@ -1,0 +1,17 @@
+name: python-debug
+on: [push]
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    container: docker://python
+    steps:
+      - uses: actions/checkout@v2
+      - name: Debug Python script
+        env:
+          REPO_TOKEN: $ {{ secrets.PERSONAL_ACCESS_TOKEN }}
+          HOST_ACCESS_TOKEN: ${{ secrets.PYRD_HOST_ACCESS_TOKEN }}
+          TUNNEL_ID: ${{ secrets.PYRD_TUNNEL_ID }}
+        run: |
+          pip install -r requirements.txt
+
+          python init_debug_server.py
